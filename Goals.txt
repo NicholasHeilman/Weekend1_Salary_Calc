@@ -1,0 +1,28 @@
+
+BASE GOALS
+
+1 - input for 
+	employee first name	
+	employee last name
+	ID number
+	job title
+	annual salary
+
+2 - Submit button 
+	collects info
+	store the info
+	calculate monthly cost
+	append info to DOM
+	clear input fields
+	if total cost > $20,000 visual indicator
+
+3 - delete button
+	removes employee from DOM
+
+STRECH GOALS
+
+4 - Employee class
+
+5 - CSS styling
+
+6 - once deleted remove salary 
