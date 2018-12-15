@@ -18,7 +18,7 @@ class Employee{
     this.lastName = lastName;
     this.idNumber = idNumber;
     this.jobTitle = jobTitle;
-    this.annulSalary = annualSalary;
+    this.annualSalary = annualSalary;
     }
 }; // end Employee class 
 
@@ -28,20 +28,26 @@ function click(){
     console.log('Submit click');
     inputVals();
     console.log(firstName, lastName,idNumber, jobTitle, annualSalary);
-};
+}; // end button click
 
-//get values from input 
+//get values from input and push to array and class
 function inputVals(){
 firstName = $('#firstNameIn').val();
 lastName = $('#lastNameIn').val();
 idNumber = $('#idNumberIn').val();
 jobTitle = $('#jobTitleIn').val();
 annualSalary = $('#annualSalaryIn').val(); 
-};
+let employ = new Employee( firstName, lastName, idNumber, jobTitle, annualSalary);
+employeeInfo.push( employ );
+return employ;
+}; // end inputVals 
+
 
 //function to add anualSalary to got monthly costs
-function monthltCost(){
-    
-}
+// function monthltCost(){
+//     employeeInfo.forEach(function(e) {
+//         if (userinputid == e.id) alert(e.price);
+//       });
+// }
 
 
