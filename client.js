@@ -1,11 +1,3 @@
-console.log( 'JS' );
-$(readyNow); 
-
-function readyNow(){
-    console.log( 'jQuery' );
-    submitClick() ;
-};
-
 class Employee{
     constructor( firstName, lastName, idNumber, jobTitle, annualSalary){
     this.firstName = firstName;
@@ -16,10 +8,18 @@ class Employee{
     }
 }; // end Employee class 
 
+console.log( 'JS' );
+$(readyNow); 
+
+function readyNow(){
+    console.log( 'jQuery' );
+    submitClick() ;
+};
+
 // function for button click 
 function submitClick(){
     $('#submitButtonIn').on('click', click);
-};
+}; // end submitClick
 
 let employeeInfo = []; 
 let annualCost = 0;
@@ -29,21 +29,22 @@ var monthCost = 0;
 function click(){
     console.log('Submit click');
     inputVals();
-    emptyInputIn();
+    employTable();
     monthlyCost();
+    emptyInputIn();
 }; // end button click
 
 //get values from input and push to array and class
 function inputVals(){
-    let firstName = $('#firstNameIn').val();
-    let lastName = $('#lastNameIn').val();
-    let idNumber = $('#idNumberIn').val();
-    let jobTitle = $('#jobTitleIn').val();
-    let annualSalary = parseFloat($('#annualSalaryIn').val()); 
-    let employ = new Employee( firstName, lastName, idNumber, jobTitle, annualSalary);
-    employeeInfo.push( employ );
+    firstName = $('#firstNameIn').val();
+    lastName = $('#lastNameIn').val();
+    idNumber = $('#idNumberIn').val();
+    jobTitle = $('#jobTitleIn').val();
+    annualSalary = parseFloat($('#annualSalaryIn').val()); 
+    let employee = new Employee( firstName, lastName, idNumber, jobTitle, annualSalary);
+    employeeInfo.push( employee );
     annualCost += annualSalary;
-    return employ;
+    return employeeInfo;
 }; // end inputVals 
 
 //function to caculate monthly cost and display on DOM
@@ -56,25 +57,41 @@ function monthlyCost(){
         $('#totalCost').css("color", "black");
     };
     console.log( monthCost );
-}
+    
+}; // end monthktCost
 
 
-//function to add employeeInfo to Table on DOM
-// function newEEToTable() {
-//     $('.bodyEETable').empty();
-//     for (employee of staff){
-//         $('.bodyEETable').append('<tr class="emp"><td>' + employee.firstName + '</td><td>' + employee.lastName + '</td><td>' + employee.empID + '</td><td>' + employee.empTitle + '</td><td>$' + employee.empSalary + '</td></tr>')
-//     };
-// }
+// function to add employeeInfo to Table on DOM
+function employTable() {
+    for ( employee of employeeInfo )
+    $('#employeeTable').empty();
+    $('#employTable').append('<tr class="tableBody"><td>' + firstName + '</td><td>' + lastName + '</td><td>' + idNumber + '</td>4<td>' + jobTitle + '</td><td>$' + annualSalary + '</td></tr>');
+}; //end employTable
+// function employTable(firstName, lastName, employeeId, jobTitle, annualSalary) {
+//     let row = '<tr>';
+//     row += `<td>${employeeInfo.firstName}</td>`;
+//     row += `<td>${lastName}</td>`;
+//     row += `<td>${employeeId}</td>`;
+//     row += `<td>${jobTitle}</td>`;
+//     row += `<td>${annualSalary}</td>`;
+//     // row += '<td><button class="delete-button">Delete</button></td>';
+//     row += '</tr>'
+//     $('#employTable').append(row);
+// };
 
 
-
-
-  function emptyInputIn(){
+// clear inputs
+function emptyInputIn(){
       // clear the inputs 
     $('#firstNameIn').val('');
     $('#lastNameIn').val('');
     $('#idNumberIn').val('');
     $('#jobTitleIn').val('');
     $('#annualSalaryIn').val('');
-  };
+  }; // end clear inputs
+
+  // When a 'Delete' button is pressed. Delete an employee's row (tr) from the 
+// employee table.
+// function deleteEmployee() {
+//     $(this).parent().parent().remove();
+// }
