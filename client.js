@@ -23,6 +23,7 @@ function submitClick(){
 
 let employeeInfo = []; 
 let annualCost = 0;
+var monthCost = 0;
 
 // fuction for button click actions
 function click(){
@@ -45,9 +46,15 @@ function inputVals(){
     return employ;
 }; // end inputVals 
 
-//function to add annual salaries
+//function to caculate monthly cost and display on DOM
 function monthlyCost(){
     let monthCost = annualCost / 12;
+    $('#totalCost').html('<p>Monthly Expenses : $' + monthCost + '</p>');
+    if (monthCost >= 20000){
+        $('#totalCost').css("color", "red");
+    } else {
+        $('#totalCost').css("color", "black");
+    };
     console.log( monthCost );
 }
 
