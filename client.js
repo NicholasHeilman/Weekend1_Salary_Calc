@@ -52,7 +52,7 @@ function inputVals() {
 //function to caculate monthly cost and display on DOM
 function monthlyCost() {
     let monthCost = annualCost / 12;
-    $('#totalCost').html('<h3>Monthly Expenses : $' + monthCost + '</h3>');
+    $('#totalCost').html('<h3>Monthly Expenses : $' + monthCost.toLocaleString() + '</h3>');
     if (monthCost >= 20000) {
         $('#totalCost').css("color", "red");
     } else {
