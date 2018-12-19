@@ -1,0 +1,69 @@
+
+give input a value to start for testing 
+
+backticks ` ` add value in line
+  `<li>${salary}</li>`  is the same as   '<li>' + salary + '</li>'
+
+
+cleaner way to add to table body
+  $('employeee-List').append(`<tr>
+                                <td>firstName</td>
+                                <td>LastName</td>
+                                <td>employeeId</td>
+                                <td>salary</td>
+                                <td>Title</td
+                                </tr>`);
+
+use a sample record to mkae CSS styling easier
+
+<input type=number> forces user to input number but returns a string
+
+magic number = undescriptive number in a code
+    use a constant for a known number  
+    monthsInYear = 12
+    monthlyBudget = 20000
+
+
+    append delete button to table 
+add to click handler
+    $('#employee-list').on('click' , '.delete', deleteEmployee);
+
+
+
+    function deleteEmployee() {
+        //what is ?this?
+        $(this).parent().parent().remove(); // removes table row
+    }
+// to remove deleted employee salary 
+let deleteEmployeeSalary = $(this).parent().parent().prev().prev().text();
+totalMonthlySalary -= parseInt(deleteEmployeeSalary) / 12;
+
+for the CSS warning use class add/remove is a better way to add styling when total > monthlyBudget
+
+get better at writing test JS
+
+function resolveConflict(){
+    if($('#monthly-total').css('color').css == 'red'){
+    $('#monthly-total').css('color', 'green');
+    }
+}
+
+
+add a class
+
+//Turns our Employee class into table row
+
+toHTML(){
+    return
+        `<tr>
+            <td>firstName</td>
+            <td>LastName</td>
+            <td>employeeId</td>
+            <td>salary</td>
+            <td>Title</td
+            </tr>`);
+}
+
+function displayEmployees(){
+    
+}

@@ -14,7 +14,7 @@ $(readyNow);
 function readyNow() {
     console.log('jQuery');
     $('#submitButtonIn').on('click', click);
-    // $('#employeeTable').on('click', '.deleteButton', deleteEmployee);
+    // $('#employeeTable').on('click', '#deleteRowBt', deleteEmployee());
 };
 
 let employeeInfo = [];
@@ -30,11 +30,6 @@ function click() {
     emptyInputIn();
 }; // end button click
 
-// delete employee row from employee table
-function deleteButton() {
-    $(this).parent().parent().remove();
-};// end delete
-
 //get values from input and push to array and class
 function inputVals() {
     firstName = $('#firstNameIn').val();
@@ -45,7 +40,7 @@ function inputVals() {
     let employee = new Employee(firstName, lastName, idNumber, jobTitle, annualSalary);
     employeeInfo.push(employee);
     annualCost += annualSalary;
-    $('#submitButtonIn').on('click', '#deleteRow', deleteButton);
+    $('#employTable').on('click', '#deleteRowBt', deleteButton);
     return employeeInfo;
 }; // end inputVals 
 
@@ -64,12 +59,23 @@ function monthlyCost() {
 // function to add employeeInfo to Table on DOM   
 function employTable() {
     for (employee of employeeInfo)
-        $('#employeeTable').empty();
-    $('#employTable').append('<tr class="tableBody">' + '<td>' + firstName + '</td>' + '<td>' +
-        lastName + '</td>' + '<td>' + idNumber + '</td>4<td>' + jobTitle + '</td>' + '<td>$' + annualSalary +
-        '</td>' + '<td>' + '<button id=deleteRowBt class=deleteRow>' + "Delete Row" + '</button>' + '</tr>');
-    // there has to be a cleaner way to do this but it works
+        $('#employTable').empty();
+// let employeeInfo = [];
+    $('#employTable').append(`<tr class="tableBody">   
+                                                <td>${firstName}</td> 
+                                                <td>${lastName }</td> 
+                                                <td>${idNumber}</td>
+                                                <td>${jobTitle }</td> 
+                                                <td>${annualSalary}</td> 
+                                                <td><button id=deleteRowBt class=deleteRow> "Delete Row" </button></tr>`);
+    // // there has to be a cleaner way to do this but it works
 }; //end employTable
+
+// delete employee row from employee table
+function deleteButton() {
+    // console.log(this);
+    $(this).parent().parent().remove();
+};// end delete
 
 // clear inputs
 function emptyInputIn() {
